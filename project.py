@@ -1,3 +1,10 @@
+# To do:
+# Command to reset tables
+# Fix sut titles in tables
+# Errors when selecting accounts in home accounts
+# Round income totals
+
+
 import cowsay
 import csv
 from project_classes import HorizontalTable, VerticalTable
@@ -44,7 +51,7 @@ def main():
                  print(f"\033[32mHome accounts: {ha_total}\033[0m")
                  print(f"\033[32mVariable expenses: {ve_total}\033[0m")
                  print(f"\033[32m-------------------------\033[0m")
-                 bal = round(monthly_balance(in_total, ha_total, ve_total), 2)
+                 bal = "${:,.2f}".format(monthly_balance(in_total, ha_total, ve_total))
                  print(f"\033[32mTotal: {bal}\033[0m")
 
                  ha_per, ve_per, sav_per = monthly_distribution(in_total, ha_total, ve_total)
@@ -180,17 +187,20 @@ def incomes_menu():
                  incomes.insert_payment()
                  incomes.total_sum()
                  incomes.print_csv()
+                 print("")
                  print("Options: 2) Insert/modify value 3) Add column 4) Delete column 0) Main menu")
                  print("")
             elif option == "3":
                  incomes.add_column()
                  incomes.print_csv()
+                 print("")
                  print("Options: 2) Insert/modify value 3) Add column 4) Delete column 0) Main menu")
                  print("")
             elif option == "4":
                  incomes.del_column()
                  incomes.total_sum()
                  incomes.print_csv()
+                 print("")
                  print("Options: 2) Insert/modify value 3) Add column 4) Delete column 0) Main menu")
                  print("")
             elif option == "0":
@@ -219,15 +229,20 @@ def home_accounts_menu():
                  home_acc.insert_payment()
                  home_acc.total_sum()
                  home_acc.print_csv()
+                 print("")
+                 print("Options: 2) Insert/modify payment 3) Add column 4) Delete column 0) Main menu")
+                 print("")
             elif option == "3":
                  home_acc.add_column()
                  home_acc.print_csv()
+                 print("")
                  print("Options: 2) Insert/modify payment 3) Add column 4) Delete column 0) Main menu")
                  print("")
             elif option == "4":
                  home_acc.del_column()
                  home_acc.total_sum()
                  home_acc.print_csv()
+                 print("")
                  print("Options: 2) Insert/modify payment 3) Add column 4) Delete column 0) Main menu")
                  print("")
             elif option == "0":
